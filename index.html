@@ -78,39 +78,29 @@
 	<script type="text/javascript" src="js/theme.js"></script>
 	<!-- // <script type="text/javascript" src="js/require.js"></script> -->
     <script>
-    	var fileURLBase = "photos/14126_caminito_vistana/"
-    	var fileHiRes = "hi_res/"
-    	var fileThmb = "thmb/"
-    	var photoDescription = "14126 Vaminito Vistana, San Diego"
-    	var fileNameList = []
     	var gallery_set = []
     	getImg = function(){
-			$.ajax({
-    			url:fileURLBase + fileHiRes,
-    			success: function(data){
-					$(data).find("li > a").each(function(){
-						// fileList.push(fileURLBase + $(this).attr("href"));
-						var fn = $(this).attr("href")
-						var galleryItem = new Object()
-			   			galleryItem["image"] = fileURLBase + fileHiRes + fn
-    					galleryItem["thmb"] = fileURLBase + fileThmb + fn
-    					galleryItem["alt"] = fn
-    					galleryItem["title"] = photoDescription
-    					galleryItem["titleColor"] = "#ffffff"
-			    		gallery_set.push(galleryItem)
-					})
-    			},
-    			async : false
-    		})
-    	}
-    	getImg();
+            var fileURLBase = "photos/14126_caminito_vistana/"
+            var fileHiRes = "hi_res/"
+            var fileThmb = "thmb/"
+            var photoDescription = "14126 Vaminito Vistana, San Diego"
+            var fileNameList = []
 
-		// gallery_set = [
-		// 	// {image: "img/gallery/slider/2.jpg", thmb: "img/gallery/slider/thumbs/2.jpg", alt: "Colors", title: "Colors", description: "Discover elegant solution for your online portfolio", titleColor: "#ffffff", descriptionColor: "#ffffff"},	
-		// ]
-		
+            for (var i=1; i<=54; i++){
+                var fn = 'Vistana-' + i + ".jpg";
+                var galleryItem = new Object()
+                galleryItem["image"] = fileURLBase + fileHiRes + fn
+                galleryItem["thmb"] = fileURLBase + fileThmb + fn
+                galleryItem["alt"] = fn
+                galleryItem["title"] = photoDescription
+                galleryItem["titleColor"] = "#ffffff"
+                gallery_set.push(galleryItem)                
+            }
+    	}
+
 		jQuery(document).ready(function(){
 			"use strict";
+            getImg();
 			jQuery('html').addClass('hasPag');
 			jQuery('body').fs_gallery({
 				fx: 'fade', /*fade, zoom, slide_left, slide_right, slide_top, slide_bottom*/
