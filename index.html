@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="fullscreen_page sticky_menu">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- <link rel="shortcut icon" href="img/favico.ico" type="image/x-icon"> 
+<link rel="apple-touch-icon" href="img/apple_icons_57x57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple_icons_72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple_icons_114x114.png"> -->
+<title>Cozy Home @ San Diego</title>
+<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,900" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/theme.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/responsive.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+    <header class="main_header">
+        <div class="header_wrapper">
+            <div class="logo_sect">
+                <a href="index.html" class="logo"><img src="img/logo.png" alt=""  class="logo_def"><img src="img/retina/logo.png" alt="" class="logo_retina"></a>
+                <div class="slogan">Beach &#x00b7 Sunshine &#x00b7 Home</div>
+            </div>                       
+            <div class="header_rp">
+                <nav>
+                    <div class="menu-main-menu-container">
+                        <ul id="menu-main-menu" class="menu">
+                            <li class="current-menu-parent menu-item-has-children">
+                                <a href="#"><span>Home</span></a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="community.html"><span>Community</span></a>         
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="blog.html"><span>Blog</span></a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="sandiego.html"><span>San Diego</span></a>        
+                            </li>  
+                            <li class="menu-item-has-children">
+                                <a href="team.html"><span>Team</span></a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="contact.html"><span>Contact</span></a>
+                            </li> 
+                           <li class="menu-item-has-children">
+                                <a href="index_cn.html"><span>中文</span></a>
+                            </li>                    
+                        </ul>
+                    </div>
+                    <div class="search_fadder"></div>
+                    <div class="header_search">
+                        <form name="search_form" method="get" action="#" class="search_form">
+                            <input type="text" name="s" value="" placeholder="Search the site..." class="field_search">
+                        </form> 
+                    </div>                
+                </nav>            
+                <a class="search_toggler" href="#"></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </header>
+    
+    <div class="fs_fadder hided"></div>
+	<div class="fs_sharing_wrapper hided"> 
+		<div class="fs_sharing">	
+            <a href="http://www.facebook.com/share.php?u=http://www.gt3themes.com/website-templates/oyster/" class="share_facebook" target="_blank"><i class="icon-facebook-square"></i></a>
+            <a href="http://pinterest.com/pin/create/button/?url=http://www.gt3themes.com/website-templates/oyster/&media=http://www.gt3themes.com/website-templates/oyster/img/logo.png" class="share_pinterest" target="_blank"><i class="icon-pinterest"></i></a>                                                            
+            <a href="https://twitter.com/intent/tweet?text=Fullscreen Slider&amp;url=http://www.gt3themes.com/website-templates/oyster/" class="share_tweet" target="_blank"><i class="icon-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=http://www.gt3themes.com/website-templates/oyster/" class="share_gplus" target="_blank"><i class="icon-google-plus-square"></i></a>
+            <a class="fs_share_close hided" href="javascript:void(0)"></a>
+        </div>
+    </div>       
+	<div class="content_bg"></div>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>    
+    <script type="text/javascript" src="js/modules.js"></script>
+	<script type="text/javascript" src="js/theme.js"></script>
+	<!-- // <script type="text/javascript" src="js/require.js"></script> -->
+    <script>
+    	var fileURLBase = "photos/14126_caminito_vistana/"
+    	var fileHiRes = "hi_res/"
+    	var fileThmb = "thmb/"
+    	var photoDescription = "14126 Vaminito Vistana, San Diego"
+    	var fileNameList = []
+    	var gallery_set = []
+    	getImg = function(){
+			$.ajax({
+    			url:fileURLBase + fileHiRes,
+    			success: function(data){
+					$(data).find("li > a").each(function(){
+						// fileList.push(fileURLBase + $(this).attr("href"));
+						var fn = $(this).attr("href")
+						var galleryItem = new Object()
+			   			galleryItem["image"] = fileURLBase + fileHiRes + fn
+    					galleryItem["thmb"] = fileURLBase + fileThmb + fn
+    					galleryItem["alt"] = fn
+    					galleryItem["title"] = photoDescription
+    					galleryItem["titleColor"] = "#ffffff"
+			    		gallery_set.push(galleryItem)
+					})
+    			},
+    			async : false
+    		})
+    	}
+    	getImg();
+
+		// gallery_set = [
+		// 	// {image: "img/gallery/slider/2.jpg", thmb: "img/gallery/slider/thumbs/2.jpg", alt: "Colors", title: "Colors", description: "Discover elegant solution for your online portfolio", titleColor: "#ffffff", descriptionColor: "#ffffff"},	
+		// ]
+		
+		jQuery(document).ready(function(){
+			"use strict";
+			jQuery('html').addClass('hasPag');
+			jQuery('body').fs_gallery({
+				fx: 'fade', /*fade, zoom, slide_left, slide_right, slide_top, slide_bottom*/
+				fit: 'no_fit',
+				slide_time: 3300, /*This time must be < then time in css*/
+				autoplay: 1,
+				show_controls: 1,
+				slides: gallery_set
+			});
+			jQuery('.fs_share').click(function(){
+				jQuery('.fs_fadder').removeClass('hided');
+				jQuery('.fs_sharing_wrapper').removeClass('hided');
+				jQuery('.fs_share_close').removeClass('hided');
+			});
+			jQuery('.fs_share_close').click(function(){
+				jQuery('.fs_fadder').addClass('hided');
+				jQuery('.fs_sharing_wrapper').addClass('hided');
+				jQuery('.fs_share_close').addClass('hided');
+			});
+			jQuery('.fs_fadder').click(function(){
+				jQuery('.fs_fadder').addClass('hided');
+				jQuery('.fs_sharing_wrapper').addClass('hided');
+				jQuery('.fs_share_close').addClass('hided');
+			});
+			
+			jQuery('.close_controls').click(function(){
+				if (jQuery(this).hasClass('open_controls')) {
+					jQuery('.fs_controls').removeClass('hide_me');
+					jQuery('.fs_title_wrapper ').removeClass('hide_me');
+					jQuery('.fs_thmb_viewport').removeClass('hide_me');
+					jQuery('header.main_header').removeClass('hide_me');
+					jQuery(this).removeClass('open_controls');
+				} else {		
+					jQuery('header.main_header').addClass('hide_me');
+					jQuery('.fs_controls').addClass('hide_me');
+					jQuery('.fs_title_wrapper ').addClass('hide_me');
+					jQuery('.fs_thmb_viewport').addClass('hide_me');
+					jQuery(this).addClass('open_controls');
+				}
+			});
+			
+			jQuery('.main_header').removeClass('hided');
+			jQuery('html').addClass('without_border');			
+		});
+	</script> 
+    <script type="text/javascript" src="js/fs_gallery.js"></script>
+</body>
+</html>
